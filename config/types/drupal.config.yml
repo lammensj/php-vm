@@ -1,0 +1,41 @@
+---
+# Configuration for composer
+drupal_composer_path: "{{ config_dir }}/drupal.composer.json"
+drupal_composer_install_dir: "/var/www/app/htdocs"
+drupal_composer_dependencies: []
+drupal_composer_project_package: "lammensj/resilient-project:8.x-dev"
+drupal_composer_project_options: "--stability dev --no-interaction"
+
+# Required Drupal settings.
+app_core_path: "/var/www/app/htdocs/web"
+drupal_core_path: "{{ app_core_path }}"
+drupal_core_owner: "{{ phpvm_user }}"
+drupal_db_name: "{{ app_db_name }}"
+drupal_db_user: "{{ app_db_user }}"
+drupal_db_password: "{{ app_db_password }}"
+
+# Set this to 'true' if you are using a composer based site deployment strategy.
+drupal_build_composer: "{{ app_build_composer }}"
+# Set this to 'true' and 'drupal_build_composer' to 'false'
+# if you are using Composer's create-project as a site deployment strategy.
+drupal_build_composer_project: "{{ app_build_composer_project }}"
+
+# Set this to 'false' if you don't need to install drupal (using the drupal_*
+# settings below), but instead copy down a database (e.g. using drush sql-sync).
+drupal_install_site: false # Pass on via CLI arguments
+
+# Settings for installing a Drupal site if 'drupal_install_site:' is 'true'.
+drupal_domain: "{{ vagrant_hostname }}"
+drupal_site_name: "PHPVM"
+drupal_install_profile: resilient
+drupal_account_name: admin
+drupal_account_pass: admin
+drupal_account_mail: 'admin@example.com'
+
+# PHP VM automatically creates a drush alias file in your ~/.drush folder if
+# this variable is 'true'.
+configure_drush_aliases: true
+drush_aliases_host_template: "templates/phpvm.aliases.drushrc.php.j2"
+drush_aliases_host_template_yml: "templates/phpvm.aliases.yml.j2"
+drush_aliases_guest_template: "templates/phpvm-local.aliases.drushrc.php.j2"
+drush_aliases_guest_template_yml: "templates/phpvm-local.aliases.yml.j2"

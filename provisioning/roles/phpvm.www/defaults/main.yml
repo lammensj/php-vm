@@ -1,0 +1,3 @@
+---
+phpvm_webserver: apache
+vagrant_user: vagrant

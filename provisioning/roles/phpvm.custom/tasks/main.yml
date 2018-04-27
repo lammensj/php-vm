@@ -1,0 +1,16 @@
+---
+- name: Register information about the app core directory
+  stat:
+    path: "{{ app_core_path }}"
+  register: app_core_dir
+
+- name: Ensure the web-app directory exists.
+  file:
+    path: "{{ app_core_path }}"
+    state: directory
+
+- name: Provide a default landing page
+  template:
+    src: index.php.j2
+    dest: "{{ app_core_path }}/index.php"
+  when: not app_core_dir.stat.exists

@@ -1,0 +1,12 @@
+{
+    "name": "lammensj/php-vm",
+    "description": "A VM for local PHP development, built with Vagrant and Ansible",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Jasper Lammens",
+            "email": "lammensjasper@gmail.com"
+        }
+    ],
+    "require": {}
+}

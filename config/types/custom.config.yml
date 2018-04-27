@@ -1,0 +1,5 @@
+---
+drupal_build_composer: false
+drupal_build_composer_project: false
+drupal_install_site: false
+configure_drush_aliases: false

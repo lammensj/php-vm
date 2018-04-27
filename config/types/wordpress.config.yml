@@ -1,0 +1,41 @@
+---
+drupal_build_composer: false
+drupal_build_composer_project: false
+drupal_install_site: false
+configure_drush_aliases: false
+
+composer_global_packages:
+  - { name: hirak/prestissimo, release: '^0.3' }
+  - { name: wp-cli/wp-cli, release: '^1.0.0' }
+
+#app_core_path: "/var/www/app/htdocs/web"
+wordpress_installs:
+  - name: PHPVM
+    dbname: "{{ app_db_name }}"
+    dbuser: "{{ app_db_user }}"
+    dbpass: "{{ app_db_password }}"
+    dbhost: localhost
+    path: "{{ app_core_path }}"
+    owner: "{{ phpvm_user }}"
+    group: "{{ phpvm_user }}"
+    url: "{{ vagrant_hostname }}"
+    title: PHPVM
+    admin_name: admin
+    admin_password: admin
+    admin_email: 'admin@example.com'
+    themes:
+      - name: twentyseventeen
+        activate: true
+    plugins:
+      - name: mailmunch
+      - name: wordpress-seo
+      - name: mailchimp-for-wp
+      - name: duracelltomi-google-tag-manager
+      - name: google-analytics-dashboard-for-wp
+      - name: hellobar
+      - name: webappick-product-feed-for-woocommerce
+      - name: contact-form-7
+      - name: contact-form-submissions
+    users: {}
+    options: []
+    queries: []
